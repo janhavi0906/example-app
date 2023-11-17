@@ -1,54 +1,50 @@
 <?php
 /**
- * Class Practical
- * This class contains static functions for practical purposes.
+ * Class representing a Practical utility with static functions.
  */
 class Practical {
     /**
-     * Calculate the factorial of a number.
+     * Calculates the sum of an array of numbers.
      *
-     * @param int $number The number to calculate factorial for.
-     * @return int The factorial of the given number.
+     * @param array $numbers An array of numbers.
+     *
+     * @return int The sum of the numbers.
      */
-    public static function calculateFactorial($number) {
-        if ($number <= 1) {
-            return 1;
-        } else {
-            return $number * self::calculateFactorial($number - 1);
-        }
+    public static function calculateSum(array $numbers) {
+        return array_sum($numbers);
     }
 
     /**
-     * Check if a number is prime.
+     * Checks if a given number is even.
      *
-     * @param int $number The number to check for primality.
-     * @return bool True if the number is prime, false otherwise.
+     * @param int $number The number to check.
+     *
+     * @return bool True if the number is even, false otherwise.
      */
-    public static function isPrime($number) {
-        if ($number <= 1) {
-            return false;
-        }
-        for ($i = 2; $i <= sqrt($number); $i++) {
-            if ($number % $i == 0) {
-                return false;
-            }
-        }
-        return true;
+    public static function isEven($number) {
+        return $number % 2 === 0;
     }
 
     /**
-     * Generate a random password of given length.
+     * Converts a string to uppercase.
      *
-     * @param int $length Length of the password to generate.
-     * @return string The generated random password.
+     * @param string $inputString The input string.
+     *
+     * @return string The uppercase version of the input string.
      */
-    public static function generateRandomPassword($length) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $password = '';
-        for ($i = 0; $i < $length; $i++) {
-            $password .= $characters[rand(0, strlen($characters) - 1)];
-        }
-        return $password;
+    public static function convertToUpperCase($inputString) {
+        return strtoupper($inputString);
     }
 }
+
+// Example usage:
+$numbers = [1, 2, 3, 4, 5];
+echo "Sum: " . Practical::calculateSum($numbers) . PHP_EOL;
+
+$evenNumber = 6;
+echo "Is $evenNumber even? " . (Practical::isEven($evenNumber) ? "Yes" : "No") . PHP_EOL;
+
+$stringToConvert = "hello";
+echo "Uppercase: " . Practical::convertToUpperCase($stringToConvert) . PHP_EOL;
+?>
 
